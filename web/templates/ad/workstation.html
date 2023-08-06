@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for w in workstations %}
+        <li>
+        {% if w.domain %}
+                Компьютер {{w.ip}} находящийся в здании {{w.building}}, расположенный в {{w.location}} пользователя {{w.username}}  <br>
+                <a href="rdpc://{{w.ip}}">Управлять</a> <a href="rdps://{{w.ip}}">Подсмотреть</a> <a href="vnc://{{w.ip}}">VNC</a> <br>
+            {% else %}
+                Компьютер {{w.ip}} находящийся в здании {{w.building}}, расположенный в {{w.location}} пользователя {{w.username}}  <br>
+                <a href="vnc://{{w.ip}}">VNC</a> <br>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
